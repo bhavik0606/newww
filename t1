@@ -1,0 +1,73 @@
+using System;
+
+namespace Task1;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string query = "Reqire at least one uppercase letter, one lowercase letter, and one digit";
+        Console.WriteLine(query);
+        
+        Console.WriteLine("Enter Password");
+        var password = Console.ReadLine();
+        bool upper= false;
+        bool lower= false;
+        bool digit = false;
+
+        
+        if (password is { Length: < 8 })
+        {
+            Console.WriteLine("character not found, Enter 8 or more character");
+            return;
+        }
+        
+        foreach (var i in password)
+        {
+            if (Char.IsUpper(i))
+            {
+                upper = true;
+                break;
+            }
+        }
+        if (upper == false)
+        {
+            Console.WriteLine("Reqire at least one uppercase");
+            return;
+        }
+        
+        
+        foreach (var i in password)
+        {
+            if (Char.IsLower(i))
+            {
+                lower = true;
+                break;
+            }
+        }
+        if (lower == false)
+        {
+            Console.WriteLine("Reqire at least one Lowercase");
+            return;            
+        }
+        
+        foreach (var i in password)
+        {
+            if (Char.IsDigit(i))
+            {
+                digit = true;
+                break;
+            }
+        }
+        if (digit == false)
+        {
+            Console.WriteLine("Reqire at least one Digit");
+            return;
+        }
+        if (upper == true && lower == true && digit == true)
+        {
+            Console.WriteLine("Password Created");
+            return;
+        }
+    }
+}
